@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>NDT-EA | Under Maintenance</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0a0a0a;
+      --surface: #111111;
+      --accent: #c9a84c;
+      --accent2: #e8c97a;
+      --text: #f0ede6;
+      --muted: #6b6760;
+      --border: rgba(201,168,76,0.2);
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      position: relative;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(201,168,76,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(201,168,76,0.04) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+    }
+
+    body::after {
+      content: '';
+      position: fixed;
+      top: -200px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(201,168,76,0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .container {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 2rem;
+      max-width: 680px;
+      width: 100%;
+      animation: fadeUp 1s ease both;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(201,168,76,0.1);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      padding: 6px 16px;
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 2.5rem;
+      animation: fadeUp 1s ease 0.1s both;
+    }
+
+    .badge-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.8); }
+    }
+
+    h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(4rem, 12vw, 8rem);
+      line-height: 0.9;
+      letter-spacing: 0.02em;
+      color: var(--text);
+      margin-bottom: 0.2em;
+      animation: fadeUp 1s ease 0.2s both;
+    }
+
+    h1 span { color: var(--accent); }
+
+    .divider {
+      width: 60px;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent), transparent);
+      margin: 1.8rem auto;
+      animation: fadeUp 1s ease 0.3s both;
+    }
+
+    .message {
+      font-size: 1rem;
+      font-weight: 300;
+      color: var(--muted);
+      line-height: 1.8;
+      max-width: 440px;
+      margin: 0 auto 2rem;
+      animation: fadeUp 1s ease 0.4s both;
+    }
+
+    .message strong {
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    .reach-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 1rem;
+      animation: fadeUp 1s ease 0.45s both;
+    }
+
+    .reach-label span { color: var(--accent); }
+
+    .contact-box {
+      display: inline-flex;
+      align-items: center;
+      background: rgba(201,168,76,0.06);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      animation: fadeUp 1s ease 0.5s both;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 24px;
+      color: var(--text);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 400;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .contact-item:hover {
+      background: rgba(201,168,76,0.12);
+      color: var(--accent);
+    }
+
+    .contact-item svg { color: var(--accent); flex-shrink: 0; }
+
+    .contact-divider {
+      width: 1px;
+      height: 48px;
+      background: var(--border);
+    }
+
+    .footer {
+      position: fixed;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      text-transform: uppercase;
+      animation: fadeUp 1s ease 0.8s both;
+      white-space: nowrap;
+    }
+
+    .footer span { color: var(--accent); }
+
+    .corner {
+      position: fixed;
+      width: 40px;
+      height: 40px;
+      opacity: 0.3;
+    }
+    .corner-tl { top: 2rem; left: 2rem; border-top: 1px solid var(--accent); border-left: 1px solid var(--accent); }
+    .corner-tr { top: 2rem; right: 2rem; border-top: 1px solid var(--accent); border-right: 1px solid var(--accent); }
+    .corner-bl { bottom: 2rem; left: 2rem; border-bottom: 1px solid var(--accent); border-left: 1px solid var(--accent); }
+    .corner-br { bottom: 2rem; right: 2rem; border-bottom: 1px solid var(--accent); border-right: 1px solid var(--accent); }
+  </style>
+</head>
+<body>
+
+  <div class="corner corner-tl"></div>
+  <div class="corner corner-tr"></div>
+  <div class="corner corner-bl"></div>
+  <div class="corner corner-br"></div>
+
+  <div class="container">
+    <div class="badge">
+      <div class="badge-dot"></div>
+      Scheduled Maintenance
+    </div>
+
+    <h1>Back<br><span>Soon</span></h1>
+
+    <div class="divider"></div>
+
+    <p class="message">
+      We're currently making <strong>improvements</strong> to deliver
+      a better experience. The site will be back up shortly —
+      thank you for your patience.
+    </p>
+
+    <p class="reach-label">We're fully operational — <span>reach our team</span></p>
+
+    <div class="contact-box">
+      <a href="tel:+254721414663" class="contact-item">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        +254 721 414 663
+      </a>
+      <div class="contact-divider"></div>
+      <a href="mailto:info@ndt-ea.com" class="contact-item">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        info@ndt-ea.com
+      </a>
+    </div>
+  </div>
+
+  <div class="footer">
+    NDT<span>-EA</span> &nbsp;·&nbsp; Est. 2017
+  </div>
+
+</body>
+</html>
